@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loguearse </title>
+</head>
+<body>
+    {% block content %}
+    <main class content>
+        <h1>Loguearse</h1>
+       {{error}}
+
+	<form  action = "/loguearse/" metod="POST">
+	    {% csrf_token %}
+           {{form.as_p}}  
+
+	  <button> 
+	   loguearse
+	  </button> 
+	</form>
+    </main>
+    {% endblock %}
+</body>
+</html>

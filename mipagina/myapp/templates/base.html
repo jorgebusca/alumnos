@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>base</title>
+</head>
+<body>
+    <header class="header">
+        <div class="navbar">
+            <h1>mi logo</h1>
+            <nav>
+                <ul>
+                        <li><a href="{% url 'index' %}">Inicio</a></li>
+                        <li><a href="{% url 'contacto' %}">Contacto</a></li>
+                        <li><a href="{% url 'tareas' %}">Tareas</a></li>                   
+                    
+                    {% if user.is_authenticated %}<!--es un objeto global que crea django -->
+                    
+                        <li><a href="{% url 'cerrar_sesion' %}">Cerrar Sesion</a></li>
+                    
+                    {% else %}
+
+                        <li><a href="{% url 'loguearse' %}">Loguearse</a></li>
+                        <li><a href="{% url 'registrarse' %}">Registrarse</a></li>
+                    
+                        {% endif %}
+                
+                </ul>
+            </nav>
+        </div>
+    </header>
+    {% block content %}
+    <main>
+    
+    </main>
+    {% endblock content %}
+    
+    <footer>
+        <p>Este es el pie de página de mi aplicación Django.</p>
+        <p>Derechos reservados &copy; 2023</p>  
+    </footer>
+</body>
+</html>
