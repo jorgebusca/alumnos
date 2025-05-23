@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>Crear Tarea</title>
+    
+</head>
+<body>
+    {% block content %}
+    <main class="container">
+        <h1>Bienvenido a mi página de crear tares</h1>
+        <p>Esta es la página de crear de mi aplicación Django.</p>
+        <form action = "/crear_tareas/" method = "POST">
+
+            {% csrf_token %}
+            {{form}}
+
+            <button>
+                    GUARDAR
+            </button>
+        </form>
+   
+        <h1>Pagina de crear tareas</h1>
+    </main>
+    {% endblock %}
+        
+        
+</body>
+</html>
