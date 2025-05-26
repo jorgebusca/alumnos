@@ -11,17 +11,31 @@
     {% block content %}
     <main class="container">
         <h1>Bienvenido a mi página de tareas</h1>
-        <p>Esta es la página de tareas de mi aplicación Django.</p>
-        <ul>
-            {% for tarea in tareas %}
-                <li>{{ tarea.nombre }}</li>
-                <li>{{ tarea.descripcion }}</li>
-                <li>{{ tarea.fecha }}</li>
-                <li>{{ tarea.precio }}</li>
-                <li>{{ tarea.usuario }}</li>
-            {% endfor %}
-        
-        <h1>Pagina de tareas</h1>
+        <h2>Pagina de tareas</h2>
+        <p>Esta es la página muestra todas las tareas de mi aplicación Django.</p>
+        <ul>            
+            <table>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Fecha</th>
+            <th>Precio</th>
+            <th>Usuario</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for tarea in tareas %}
+        <tr>
+            <td>{{ tarea.nombre }}</td>
+            <td>{{ tarea.descripcion }}</td>
+            <td>{{ tarea.fecha }}</td>
+            <td>{{ tarea.precio }}</td>
+            <td>{{ tarea.usuario }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>  
     </main>
     {% endblock %}
     
