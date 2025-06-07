@@ -1,0 +1,44 @@
+1) CREAR MI PROPIO SERVIDOR WEB REMOTO DESDE MI CASA 
+
+.- HTTPS://WWW.NOIP.COM
+	. DYNAMIC dns
+	. Create Hostname
+	. django_crud
+
+2) CONFIGURAR EL EQUIPO 
+
+.- Maquina Virtual  >  Adaptador Puente 
+
+3) COMPROBAR LA RESOLUCION DE NOMBRES DDNS
+
+.- Comprobar que tenemos internet 
+	.- networkctl status 
+.- nslookup alumnosifts11.net
+.- clear
+
+
+4) CONFIGURAR EL ROUTER/EQUIPO PARA QUE SE ACTUALICE 
+
+.- Configuracion del servidor de nombre de dominios dinamicos(DynDNS)
+.- Instalar el cliente no-ip en linux
+      https://www.youtube.com/watch?v=kZRJuQUIBU4&t=449s
+
+usuario : w8zs1gz
+contraseña : z7CAxYnWYzQ2
+
+5)tener un servidor apache en mi maquina puede ser WAMP o XAMPP
+
+Configurar "servidor virtual "
+
+hospedador virtual : alumnosifts11.ddns.net
+
+ruta de carpeta: C:\wamp64\www
+
+tildo si para php 
+
+configuro la ip virtual para ingresar desde mi pc : 192.168.0.100
+
+
+
+
+
