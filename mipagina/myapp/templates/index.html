@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -6,14 +7,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <link rel="stylesheet" href="{% static 'styles/estilos.css' %}">   
+
 </head>
 <body>
     {% block content %}
     <main class="container">
+
         <h1>Bienvenido a mi página de inicio</h1>
-        <p>Esta es la página de inicio de mi aplicación Django.</p>
-        
-        <h1>Pagina de inicio</h1>
+       
+        <div class="page">
+            <div class="grid_seccion">
+                <div class="grid_display">
+                    {% for tareas in tarea %}
+                    <div class="fondo_tarea">
+                        {{ tareas.id}}
+                        <h2>{{ tareas.nombre }}</h2>                        
+                        <img src="{{ tareas.imagen.url }}">
+                        <p>{{tareas.descripcion}}</p>
+                        <h3>{{tareas.precio}}</h3>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- Aside section (20%) -->
+            <aside>
+                <h3>Aside</h3>
+                <p>Contenido adicional aquí.</p>
+                <div class="aside-links">                    
+                </div>
+                <div class="aside-links">                    
+                </div>
+                <div class="aside-links">                    
+                </div>
+            </aside>
+        </div>
     </main>
     {% endblock %}
     

@@ -1,16 +1,23 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>base</title>
+    <title> base</title>
+    <link rel="stylesheet" href="{% static 'styles/estilos.css' %}">
+    
 </head>
 <body>
-    <header class="header">
-        <div class="navbar">
+    <header class="header" >
+        <div class="logo">
+            <img src="{% static 'imagenes/fondo.jpeg' %}">
+        </div> 
+        
             <h1>mi logo</h1>
-            <nav>
-                <ul>
+            <nav class= "nav">
+                <ul class="nav_list">
                         <li><a href="{% url 'index' %}">Inicio</a></li>
                         <li><a href="{% url 'contacto' %}">Contacto</a></li>
                     {% if user.is_authenticated %}<!--es un objeto global que crea django -->
@@ -18,6 +25,7 @@
                         <li><a href="{% url 'cerrar_sesion' %}">Cerrar Sesion</a></li>
                         <li><a href="{% url 'tareas' %}">Tareas</a></li>    
                         <li><a href="{% url 'crear_tareas' %}">Crear Tareas</a></li>
+                        
                     {% else %}
 
                         <li><a href="{% url 'loguearse' %}">Loguearse</a></li>

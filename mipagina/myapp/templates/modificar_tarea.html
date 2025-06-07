@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Modificar Tarea{% endblock %}</title>
+    
+</head>
+<body>
+    {% block content %}
+    <h1>Modificar Tarea</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar Cambios</button>
+        <button><a href="{% url 'tareas' %}">Cancelar</a></button>
+    </form>
+    {% endblock %}
+</body>
+</html>

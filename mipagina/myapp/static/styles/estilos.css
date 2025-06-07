@@ -1,0 +1,172 @@
+body{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: aquamarine;
+    margin: 0;
+    padding: 20px;
+}
+
+
+.header{
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    text-align:left;
+}
+
+/* Estilo de la barra de navegación */
+.nav {
+    background-color: #334ee7; /* Color de fondo de la barra */
+    overflow: hidden; /* Para evitar que los elementos se desborden */
+    flex-grow: 1; /* Hacer que la barra de navegación ocupe el espacio restante */
+}
+
+/* Estilo de la lista de navegación */
+.nav_list {
+    list-style-type: none; /* Eliminar los puntos de la lista */
+    margin: 0; /* Eliminar márgenes */
+    padding: 0; /* Eliminar relleno */
+    display: flex; /* Usar flexbox para alinear los elementos horizontalmente */
+    justify-content: center; /* Centrar los elementos en la barra */
+}
+
+.nav_list li {
+    flex: 1; /* Distribuir los elementos uniformemente */
+}
+
+.nav_list a {
+    display: block; /* Hacer que el enlace ocupe todo el espacio del elemento */
+    color: white; /* Color del texto */
+    text-align: center; /* Centrar el texto */
+    padding: 14px 20px; /* Espaciado interno */
+    text-decoration: none; /* Eliminar subrayado */
+    transition: background-color 0.3s; /* Transición suave para el efecto hover */
+}
+
+
+/* Efecto hover */
+.nav_list a:hover {
+    background-color: #2ba1f6; /* Color de fondo al pasar el ratón */
+}
+
+/* Estilo adicional para los encabezados dentro de los enlaces */
+.nav-list h2 {
+    margin: 0; /* Eliminar márgenes del h2 */
+    font-size: 16px; /* Tamaño de fuente */
+}
+
+.logo img{
+    width: 50px;
+    height: 50px;
+    vertical-align:middle;
+}
+
+/*pagimna de inicio/*/
+
+.grid_seccion{
+    flex: 0 0 80%; 
+    padding: 10px; 
+    background: #71abe5; 
+    border-radius: 8px;
+}
+
+.grid_display{
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    grid-gap: 16px;
+}
+.fondo_tarea{
+    background:rgb(37, 126, 234); 
+    padding: 30px; 
+    text-align: center; 
+    border-radius: 8px;
+}
+
+.grid_cuerpo{
+    background:rgb(37, 126, 234); 
+    padding: 30px; 
+    text-align: center; 
+    border-radius: 8px;
+}
+
+.grid_page{
+    flex: 0 0 80%; 
+    padding: 10px;
+
+}
+
+.fondo_tarea img{
+    width: 150px;
+    height: 150px;
+    vertical-align:middle;
+}
+
+
+.page{
+    display: flex; width: 100%;
+}
+
+aside {
+    flex: 0 0 20%;
+    padding: 10px; 
+    background: #e9ecef; 
+    border-radius: 8px; margin-left: 16px;
+}
+
+/* pagina de tareas */
+.fondo_tareas {
+    background:rgb(23, 97, 235);
+    padding: 30px;
+    text-align: center; border-radius: 8px;
+    background: url("{% static 'imagenes/puente.jpg' %}") no-repeat center center fixed;
+    background-size: cover;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: #217dce;
+}
+
+.table-header {
+    background-color: #007bff;
+    color: white;
+}
+
+.table-header th, .table-row td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.table-row:hover {
+    background-color: #f1f1f1;
+}
+
+img {
+    max-width: 100px;
+    height: auto;
+}
+
+.btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    margin-right: 5px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+}
+
+.btn-danger {
+    background-color: #dc3d35;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+

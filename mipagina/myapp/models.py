@@ -11,6 +11,6 @@ class Tareas(models.Model):
     imagen = models.ImageField(upload_to='imagenes/', blank=True, null=True)
     
     def __str__(self):
-        return f"{self.nombre} - {self.usuario.username}"
+        return f"{self.id} - {self.nombre} - {self.usuario.username}"
     
     

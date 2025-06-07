@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User 
 from django.contrib.auth import login, logout, authenticate
@@ -8,7 +8,8 @@ from .models import Tareas
 
 
 def index(request):
-    return render(request, "index.html")
+    tarea= Tareas.objects.all()
+    return render(request, "index.html", {"tarea": tarea})
 
 
 def contacto(request):
@@ -65,18 +66,60 @@ def tareas(request):
         'tareas': tareas,
     }) # renderizo la plantilla tareas.html y le paso las tareas que traje de la base de datos
 
-
 def crear_tareas(request):
     if request.method == 'GET':
         return render(request, 'crear_tareas.html',{
             'form': TareasForm,
 	})
     else:
-        form = TareasForm(request.POST)
-        nueva_tarea = form.save(commit=False) # esto lo guardaria como una instancia en la base de datos 
-        
-        nueva_tarea.usuario = request.user # este es el usuario de la tares 
-        nueva_tarea.save()
-        return render(request, 'crear_tareas.html',{
-            'form': TareasForm(),
-        })# Redirige a la vista de tareas    
+        try:
+            form = TareasForm(request.POST, request.FILES)
+            if form.is_valid():  # Verifica si el formulario es válido                
+                nueva_tarea = form.save(commit=False) # esto lo guardaria como una instancia en la base de datos 
+                nueva_tarea.usuario = request.user # este es el usuario de la tares 
+                nueva_tarea.save()
+                return render(request, 'crear_tareas.html',{
+                    'form': TareasForm,
+                    'mensaje': 'Tarea creada correctamente',
+                })
+        except ValueError:
+            return render(request, 'crear_tareas.html',{
+                'form': TareasForm,
+                'error': 'Error al crear la tarea',     
+            })# Redirige a la vista de tareas        
+
+
+def modificar_tarea(request, tarea_id):
+    tarea = get_object_or_404(Tareas, id=tarea_id)  # Obtiene la tarea específica por id
+    modificar= Tareas.objects.get(id=tarea_id)  # Obtiene la tarea para modificarla
+    if request.method == 'POST':
+        form = TareasForm(request.POST, instance=modificar)  # Crea un formulario con los datos de la tarea
+        if form.is_valid():
+            form.save()  # Guarda los cambios en la tarea
+            return redirect('tareas')  # Redirige a la vista de tareas
+        else:
+            return render(request, 'modificar_tarea.html', {
+                'form': form, 
+                'tarea': tarea, 
+                'error': 'Error al modificar la tarea'})    
+    else:
+        form = TareasForm(instance=modificar)  # Crea un formulario con los datos actuales de la tarea
+        return render(request, 'modificar_tarea.html', {'form': form, 'tarea': tarea}) # de tareas con el formulario y la tarea modificar
+
+
+def eliminar_tarea(request, tarea_id):
+    tareas= get_object_or_404(Tareas, id=tarea_id)  # Obtiene la tarea específica por id
+    tareas= Tareas.objects.get(id=tarea_id)
+    if request.method == 'POST':
+        form = TareasForm(request.POST, instance=tareas)  
+        if form.is_valid():
+            tareas.delete()# Elimina la tarea de la base de datos
+            return redirect('tareas')  # Redirige a la vista de tareas
+        else:
+            return render(request, 'eliminar_tarea.html', {
+                'form': form, 
+                'tarea': tareas, 
+                'error': 'Error al Eliminar la tarea'})   
+    else:
+        form = TareasForm(instance=tareas)  # Inicializa 'form' aquí   
+        return render(request, 'eliminar_tarea.html', {'form': form})  # Renderiza la plantilla con las tareas

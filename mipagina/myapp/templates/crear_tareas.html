@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     
     <title>Crear Tarea</title>
+    <link rel="stylesheet" href="{% static 'styles/estilos.css' %}">
     
 </head>
 <body>
@@ -13,7 +16,7 @@
     <main class="container">
         <h1>Bienvenido a mi página de crear tares</h1>
         <p>Esta es la página de crear de mi aplicación Django.</p>
-        <form action = "/crear_tareas/" method = "POST">
+        <form method = "POST" enctype="multipart/form-data">
 
             {% csrf_token %}
             {{form.as_p}}
